@@ -5,7 +5,8 @@
 
 
 const prompt = require('prompt-sync')();
-const atm = require('./atm')
+const atm = require('./atm');
+const accounts = require('./accounts');
 
 
   
@@ -15,7 +16,6 @@ function validatePerson(){
     let inputPin = prompt();
     return inputPin; 
 }
-validatePerson();
 
 function pinValidated() {
     if(atm.pin(validatePerson) === true){
@@ -27,7 +27,6 @@ function pinValidated() {
     }
     
 }
-pinValidated();
 function mainMenu(){
     console.log("Hello! Please type 'W' to withdraw, 'D' to deposit, 'G' to get your balance, or 'C' to cancel");
     let userInput = prompt();
@@ -47,7 +46,7 @@ function mainMenu(){
           console.log(atm.balance);
       break;
       case "C":
-          console.log("Ok. Have a nice day.")
+          console.log("Ok. Have a nice day.");
       return
       default:
       return mainMenu();
@@ -55,9 +54,11 @@ function mainMenu(){
   }
   
 function anotherTransaction() {
+    
+}
     console.log("Do you want to continue to another transaction? Type 'Y' for yes, or 'N' for no");
     const userInput = prompt();
-    const validYesNo = yesNo(userInput).trim()
+    const validYesNo = yesNo(userInput).trim();
     switch(validYesNo){
         case "Y":
             mainMenu;
@@ -68,9 +69,13 @@ function anotherTransaction() {
         break;
         default:
             console.log("Invalid entry. ");
-            anotherTransaction()
+            anotherTransaction();
         }
 
     function yesNo(input){
         return input.toUpperCase(); 
       }
+
+ validatePerson();
+ pinValidated();
+
